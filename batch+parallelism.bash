@@ -4,9 +4,9 @@ progress-bar() {
   local current=$1
   local len=$2
 
-  local bar_char='#'
-  local empty_char='-'
-  local length=50
+  local bar_char='#'   # Completed Progress bar symbol
+  local empty_char='-' # Incomplete progress bar symbol
+  local length=50      # Progress bar length
   local perc_done=$((current * 100 / len))
   local num_bars=$((perc_done * length / 100))
 
@@ -27,18 +27,16 @@ progress-bar() {
 # This function now just processes a single file
 process-file() {
   local file=$1
-  # Simulate some work for each file
-  sleep 0.01
-  # For demonstration, let's output something to show it's working
-  # echo "Processed: $file" > /dev/null # Redirect to null to avoid cluttering output
+
+  sleep 0.01 # Simulate some work for each file. Increase if the bar moves too fast.
 }
 
-export -f process-file
+export -f process-file # Exports the function as a command to be parsed into `xargs`
 
 shopt -s globstar nullglob
 
-echo 'finding files'
-files=(/usr/bin/*) # Using /usr/bin for demonstration
+echo 'finding files...'
+files=(/usr/bin/*) # Using /usr/bin for demonstration. Replace with any directory with lots of files
 len=${#files[@]}
 echo "found $len files"
 
@@ -51,7 +49,7 @@ echo "Processing files in batches of $batch_size with $max_parallel_jobs paralle
 
 # Loop through files in batches
 for ((i = 0; i < len; i += batch_size)); do
-  # Determine the end index for the current batch
+  # Determine the end index for the current batch. Helps with our remainder issue.
   batch_end=$((i + batch_size - 1))
   if ((batch_end >= len)); then
     batch_end=$((len - 1))
@@ -75,5 +73,4 @@ for ((i = 0; i < len; i += batch_size)); do
 
 done
 
-echo
-printf "Done processing all $len files in $SECONDS seconds!\n"
+printf "\nDone processing all $len files in $SECONDS seconds!"
