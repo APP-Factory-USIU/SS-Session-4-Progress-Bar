@@ -39,9 +39,9 @@ echo "found $len files"
 
 i=0
 for file in "${files[@]}"; do
-  progress-bar "$((i + 1))" "$len"
   process-file "$file"
   ((i++))
+  progress-bar "$i" "$len"
 done
 
 echo
