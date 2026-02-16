@@ -1,3 +1,6 @@
+# This script only has the batching mechanism and is still takes the same execution time as the original script.
+# This is here for learning and if you want to see the faster script, run the batch+parallelism.bash script.
+
 #!/usr/bin/env bash
 
 progress-bar() {
@@ -33,8 +36,8 @@ process-file() {
 
 shopt -s globstar nullglob
 
-echo 'finding files'
-# Using /usr/bin for demonstration as it usually contains many files
+echo 'finding files...'
+# Using /usr/bin for demonstration as it usually contains many files. Replace with any directory with lots of files
 files=(/usr/bin/*)
 len=${#files[@]}
 echo "found $len files"
@@ -49,6 +52,7 @@ echo "Processing files in batches of $batch_size..."
 # Loop through files in batches
 for ((i = 0; i < len; i += batch_size)); do
   # Determine the end index for the current batch, ensuring it doesn't go past the total number of files
+  # This is how we deal with any reminders
   batch_end=$((i + batch_size - 1))
   if ((batch_end >= len)); then
     batch_end=$((len - 1))
