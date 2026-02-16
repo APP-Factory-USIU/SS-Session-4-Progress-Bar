@@ -7,7 +7,7 @@ For now, we have a fixed batch size of 100, but what if there was a way to set t
 
 ### Hint
 * 1. Semi-Dynamic Batch size
-Start basic, assign a batch size if the number of files of between a range:
+Start basic: assign a batch size when the number of files is within a certain range:
 
 > [!NOTE]
 > Below **is not** a functional snippet. It's just there to give you an idea
