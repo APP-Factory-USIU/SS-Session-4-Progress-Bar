@@ -2,7 +2,7 @@
 These tasks **aren't** necessary but I think they'll be a good challenge.
 
 ## 1. Dynamic Batch size
-Our current `batch+pallelism.bash` file works great, but it could be better.
+Our current `batch+parallelism.bash` file works great, but it could be better.
 For now, we have a fixed batch size of 100, but what if there was a way to set this value automatically??
 
 ### Hint
