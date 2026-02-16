@@ -1,5 +1,5 @@
 # Follow up tasks
-These tasks **aren't** necessary but I think they'll a good challenge.
+These tasks **aren't** necessary but I think they'll be a good challenge.
 
 ## 1. Dynamic Batch size
 Our current `batch+pallelism.bash` file works great, but it could be better.
