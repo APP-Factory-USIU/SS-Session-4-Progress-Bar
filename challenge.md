@@ -22,4 +22,4 @@ else;
 * 2. Fully Dynamic Batch size
 Think of how to determine the largest number that can divide the number of files. (**Remember:** Remainder == 0)
 
-Have a look at the `factor` package. It may be of use if you think back to `xargs`
+Have a look at the `factor` command (part of GNU coreutils). It may be of use if you think back to `xargs`
