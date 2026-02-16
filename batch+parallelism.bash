@@ -73,4 +73,4 @@ for ((i = 0; i < len; i += batch_size)); do
 
 done
 
-printf "\nDone processing all $len files in $SECONDS seconds!"
+printf "\nDone processing all $len files in $SECONDS seconds!\n"
