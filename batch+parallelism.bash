@@ -65,7 +65,7 @@ for ((i = 0; i < len; i += batch_size)); do
   # We print the batch's file list and pipe it to xargs safely
   # so that the files are processed in parallel.
   # The `process-file` command is called for each file by xargs.
-  printf '%s\n' "${current_batch_files[@]}" | xargs -P "$max_parallel_jobs" -I {} bash -c 'process-file "$@"' _ {}
+  printf '%s\0' "${current_batch_files[@]}" | xargs -0 -P "$max_parallel_jobs" -I {} bash -c 'process-file "$@"' _ {}
 
   # Update total processed count after the batch is complete
   total_processed=$((total_processed + ${#current_batch_files[@]}))
